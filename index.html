@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>agua viva · living — refugios de retiro en clima de niebla</title>
+<meta name="description" content="Una red de refugios de retiro natural en clima fresco, pensados para el silencio, el agua y el descanso.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="encabezado">
+  <div class="contenedor encabezado__fila">
+    <a href="#registro" class="marca">agua viva<span class="marca__punto">.</span><span class="marca__living">living</span></a>
+    <nav class="nav">
+      <a href="#filosofia">Filosofía</a>
+      <a href="#refugios">Refugios</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#registro">Registro</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ==========================================================================
+     REGISTRO
+     Formulario de registro / contacto, al inicio del sitio antes del hero.
+     ========================================================================== -->
+<section class="contacto seccion" id="registro">
+  <div class="contenedor">
+    <div class="contacto__grid">
+      <div data-reveal>
+        <h2 class="contacto__titulo">Sé de los primeros en conocer el próximo refugio</h2>
+        <p class="contacto__texto">Regístrate si te interesa reservar, invertir en un futuro sitio de la red, o simplemente saber cuándo abre el siguiente refugio.</p>
+      </div>
+      <form class="formulario" data-reveal onsubmit="return false;">
+        <div>
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
+        </div>
+        <div>
+          <label for="correo">Correo</label>
+          <input type="email" id="correo" name="correo" placeholder="tucorreo@ejemplo.com">
+        </div>
+        <div>
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="3" placeholder="Cuéntanos qué te interesa"></textarea>
+        </div>
+        <button type="submit" class="boton boton--claro" style="align-self:flex-start;">Enviar mensaje</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     HERO
+     ========================================================================== -->
+<section class="hero" id="inicio">
+  <div class="hero__arte" aria-hidden="true">
+    <!-- Reemplaza esta imagen: pon tu foto en images/hero.jpg -->
+    <img src="images/hero.jpg" alt="" loading="eager">
+  </div>
+  <div class="hero__velo" aria-hidden="true"></div>
+
+  <div class="hero__contenido contenedor">
+    <p class="hero__linea">una red de refugios, no un lugar único</p>
+    <h1 class="hero__titulo">Donde el aire frío y el agua marcan el ritmo del descanso</h1>
+    <div class="hero__pie">
+      <p class="hero__descripcion">Cabañas de retiro en climas frescos de Colombia, diseñadas para quienes buscan silencio real y naturaleza sin artificio.</p>
+      <a href="#refugios" class="boton boton--claro">Conocer los refugios</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     FILOSOFÍA
+     ========================================================================== -->
+<section class="filosofia seccion" id="filosofia">
+  <div class="contenedor filosofia__grid">
+    <div class="filosofia__arte" data-reveal="imagen">
+      <!-- Reemplaza esta imagen: pon tu foto en images/filosofia.jpg -->
+      <img src="images/filosofia.jpg" alt="Detalle del entorno natural de un refugio Agua Viva" loading="lazy">
+    </div>
+    <div>
+      <p class="filosofia__marca-agua" data-reveal>el agua no se apura, y aun así llega a todas partes</p>
+      <h2 class="filosofia__titulo" data-reveal>Un refinamiento sereno, no ostentoso</h2>
+      <p class="filosofia__texto" data-reveal>Agua Viva nace de una idea simple: el descanso profundo necesita un clima específico. No cualquier finca, no cualquier temperatura. Buscamos terrenos de montaña, con niebla en las mañanas y agua cerca — nacimientos, quebradas, lagunas — porque ese es el entorno donde el cuerpo se aquieta sin esfuerzo.</p>
+      <p class="filosofia__texto" data-reveal>Cada refugio se diseña con materiales locales y arquitectura discreta, para que el paisaje siga siendo el protagonista. Nada de lujo ruidoso: espacios cálidos, bien hechos, pensados para quedarse en silencio.</p>
+      <div class="filosofia__cifras" data-reveal>
+        <div>
+          <span class="cifra__numero">1</span>
+          <span class="cifra__etiqueta">refugio en operación</span>
+        </div>
+        <div>
+          <span class="cifra__numero">+2</span>
+          <span class="cifra__etiqueta">terrenos en evaluación</span>
+        </div>
+        <div>
+          <span class="cifra__numero">100%</span>
+          <span class="cifra__etiqueta">clima frío de montaña</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     REFUGIOS
+     ========================================================================== -->
+<section class="refugios seccion" id="refugios">
+  <div class="contenedor">
+    <div class="seccion__encabezado" data-reveal>
+      <h2 class="seccion__titulo">Los refugios</h2>
+      <p class="seccion__intro">Agua Viva crece como una red: cada sitio nuevo se suma solo si cumple con el mismo criterio de clima y agua. Esto es lo que hay hasta ahora.</p>
+    </div>
+
+    <div class="refugios__lista">
+      <div class="refugio" data-reveal>
+        <div>
+          <h3 class="refugio__nombre">Refugio Cañaveral</h3>
+          <span class="refugio__lugar">Vereda Cañaveral, Victoria, Caldas</span>
+        </div>
+        <p class="refugio__descripcion">El primer sitio de la red. Un lote de montaña sobre clima fresco, con acceso propio en desarrollo y vista abierta a la cordillera.</p>
+        <span class="refugio__estado">en desarrollo</span>
+      </div>
+
+      <div class="refugio" data-reveal>
+        <div>
+          <h3 class="refugio__nombre">Próximo refugio</h3>
+          <span class="refugio__lugar">Oriente antioqueño</span>
+        </div>
+        <p class="refugio__descripcion">Estamos evaluando un segundo terreno en clima frío, siguiendo el mismo criterio de agua cercana y niebla de montaña.</p>
+        <span class="refugio__estado">en evaluación</span>
+      </div>
+
+      <div class="refugio" data-reveal>
+        <div>
+          <h3 class="refugio__nombre">Tercer sitio</h3>
+          <span class="refugio__lugar">por confirmar</span>
+        </div>
+        <p class="refugio__descripcion">La red sigue abierta. Cada nuevo refugio se anuncia aquí antes de abrir reservas.</p>
+        <span class="refugio__estado">próximamente</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     EXPERIENCIA
+     ========================================================================== -->
+<section class="experiencia seccion" id="experiencia">
+  <div class="contenedor">
+    <div class="seccion__encabezado" data-reveal>
+      <h2 class="seccion__titulo">La estadía</h2>
+      <p class="seccion__intro">Lo que se mantiene igual en cualquier refugio de la red, sin importar el sitio.</p>
+    </div>
+
+    <div class="experiencia__grid">
+      <div class="experiencia__item" data-reveal>
+        <svg class="experiencia__icono" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 20c4-6 8-6 12 0s8 6 12 0" stroke="#5C6E56" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M4 26c4-6 8-6 12 0s8 6 12 0" stroke="#7FA39B" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <h3 class="experiencia__titulo">Agua cerca siempre</h3>
+        <p class="experiencia__texto">Nacimiento, quebrada o laguna a pocos minutos caminando desde la cabaña.</p>
+      </div>
+      <div class="experiencia__item" data-reveal>
+        <svg class="experiencia__icono" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="17" cy="17" r="6" stroke="#5C6E56" stroke-width="1.6"/>
+          <path d="M17 4v4M17 26v4M4 17h4M26 17h4" stroke="#5C6E56" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <h3 class="experiencia__titulo">Clima frío de montaña</h3>
+        <p class="experiencia__texto">Temperaturas frescas todo el año — sin ventiladores, sin aire acondicionado.</p>
+      </div>
+      <div class="experiencia__item" data-reveal>
+        <svg class="experiencia__icono" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="10" width="22" height="17" rx="1" stroke="#5C6E56" stroke-width="1.6"/>
+          <path d="M6 15h22" stroke="#5C6E56" stroke-width="1.6"/>
+        </svg>
+        <h3 class="experiencia__titulo">Arquitectura discreta</h3>
+        <p class="experiencia__texto">Materiales locales, escala pequeña, sin competir nunca con el paisaje.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     GALERÍA
+     ========================================================================== -->
+<section class="galeria seccion" id="galeria">
+  <div class="contenedor">
+    <div class="seccion__encabezado" data-reveal>
+      <h2 class="seccion__titulo">Atmósfera</h2>
+    </div>
+    <div class="galeria__grid">
+      <!-- Cada pieza es una foto. Coloca tus archivos en la carpeta images/ con estos nombres, o cambia el src. -->
+      <div class="galeria__pieza galeria__pieza--grande" data-reveal="imagen">
+        <img src="images/galeria-1.jpg" alt="Vista amplia de montaña con niebla" loading="lazy">
+      </div>
+      <div class="galeria__pieza" data-reveal="imagen">
+        <img src="images/galeria-2.jpg" alt="Detalle de textura natural" loading="lazy">
+      </div>
+      <div class="galeria__pieza" data-reveal="imagen">
+        <img src="images/galeria-3.jpg" alt="Detalle de agua" loading="lazy">
+      </div>
+      <div class="galeria__pieza" data-reveal="imagen">
+        <img src="images/galeria-4.jpg" alt="Detalle de madera" loading="lazy">
+      </div>
+      <div class="galeria__pieza" data-reveal="imagen">
+        <img src="images/galeria-5.jpg" alt="Sendero entre la vegetación" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     PIE DE PÁGINA
+     ========================================================================== -->
+<footer class="contacto">
+  <div class="contenedor">
+    <div class="pie">
+      <span>© 2026 agua viva · living</span>
+      <div class="pie__redes">
+        <a href="#">Instagram</a>
+        <a href="#">WhatsApp</a>
+        <a href="#">Correo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

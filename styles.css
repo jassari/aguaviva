@@ -1,0 +1,809 @@
+/* ==========================================================================
+   AGUA VIVA · LIVING — HOJA DE ESTILOS
+   ==========================================================================
+   Este archivo está organizado en secciones para que sea fácil de modificar:
+
+     1. COLORES PRINCIPALES  ← empieza aquí si quieres cambiar la paleta
+     2. TIPOGRAFÍA
+     3. RESET Y BASE
+     4. UTILIDADES DE LAYOUT
+     5. ENCABEZADO / NAVEGACIÓN
+     6. HERO (portada)
+     7. FILOSOFÍA
+     8. REFUGIOS (red de sitios)
+     9. EXPERIENCIA
+     10. GALERÍA
+     11. CONTACTO / PIE DE PÁGINA
+     12. ANIMACIONES (revelado al hacer scroll, portada, cursor)
+     13. RESPONSIVE (pantallas pequeñas)
+
+   Cada sección tiene comentarios explicando qué controla cada regla.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. COLORES PRINCIPALES
+   ==========================================================================
+   Toda la paleta del sitio vive aquí, como variables CSS ("custom properties").
+   Si quieres cambiar el color de acento, el fondo, o el tono de los textos,
+   SOLO necesitas tocar los valores de este bloque — el resto del archivo
+   los usa por nombre y se actualiza automáticamente.
+   ========================================================================== */
+
+:root {
+  /* --- Verdes: la base de la marca, inspirados en bosque de niebla --- */
+  --av-bosque-profundo: #1B2A22;   /* Verde bosque muy oscuro. Fondos oscuros, footer, texto sobre claro */
+  --av-bosque-medio:    #2E4436;   /* Un tono más claro del anterior. Degradados, hover sobre oscuro */
+  --av-musgo:           #5C6E56;   /* Verde musgo — acentos, líneas, texto secundario sobre claro */
+  --av-salvia:          #A9B79C;   /* Verde salvia claro — fondos suaves, tarjetas, divisores */
+
+  /* --- Neutros: papel y niebla --- */
+  --av-niebla:          #F1EDE3;   /* Blanco cálido tipo papel — fondo principal del sitio */
+  --av-niebla-oscura:   #E4DFD0;   /* Un paso más oscuro que la niebla — separar secciones claras */
+  --av-piedra:          #3A362E;   /* Casi negro cálido — texto principal sobre fondo claro */
+
+  /* --- Acento cálido: madera / tierra --- */
+  --av-barro:           #A9754F;   /* Terracota apagado / madera — el único acento cálido del sitio */
+  --av-barro-suave:     #C9A483;   /* Versión clara del barro — hover, detalles pequeños */
+
+  /* --- Agua: el guiño literal al nombre "Agua Viva" --- */
+  --av-agua:            #7FA39B;   /* Verde-azul mineral — usado con moderación, agua/reflejos */
+
+  /* --- Tipografía: tamaños base (ver sección 2 para las familias) --- */
+  --tipo-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --tipo-texto:   "Karla", "Helvetica Neue", Arial, sans-serif;
+
+  /* --- Ritmo de espaciado, en rem, para mantener consistencia --- */
+  --espacio-xs: 0.5rem;
+  --espacio-sm: 1rem;
+  --espacio-md: 2rem;
+  --espacio-lg: 4rem;
+  --espacio-xl: 7rem;
+
+  /* --- Ancho máximo de contenido, para que el texto no se estire demasiado --- */
+  --ancho-contenido: 1180px;
+  --ancho-lectura: 62ch; /* ancho ideal para párrafos largos */
+}
+
+
+/* ==========================================================================
+   2. TIPOGRAFÍA
+   ==========================================================================
+   Dos familias:
+   - Fraunces (serif con carácter orgánico, "ondulado") para titulares:
+     evoca algo natural y hecho a mano, no corporativo.
+   - Karla (sans-serif humanista) para texto de lectura: cálida y legible.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Karla:ital,wght@0,300;0,400;0,500;1,400&display=swap');
+
+
+/* ==========================================================================
+   3. RESET Y BASE
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--av-niebla);
+  color: var(--av-piedra);
+  font-family: var(--tipo-texto);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, h4 {
+  font-family: var(--tipo-display);
+  font-weight: 500;
+  line-height: 1.08;
+  margin: 0;
+  color: var(--av-bosque-profundo);
+}
+
+p {
+  margin: 0 0 var(--espacio-sm) 0;
+  max-width: var(--ancho-lectura);
+}
+
+/* Foco de teclado visible — accesibilidad */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--av-barro);
+  outline-offset: 3px;
+}
+
+/* Respeta a quienes prefieren menos animación */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+
+/* ==========================================================================
+   4. UTILIDADES DE LAYOUT
+   ========================================================================== */
+
+.contenedor {
+  width: 100%;
+  max-width: var(--ancho-contenido);
+  margin: 0 auto;
+  padding: 0 var(--espacio-md);
+}
+
+.seccion {
+  padding: var(--espacio-xl) 0;
+}
+
+.boton {
+  display: inline-block;
+  padding: 0.9rem 1.9rem;
+  border: 1px solid var(--av-bosque-profundo);
+  border-radius: 999px;
+  font-family: var(--tipo-texto);
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  color: var(--av-bosque-profundo);
+  background: transparent;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.boton:hover {
+  background: var(--av-bosque-profundo);
+  color: var(--av-niebla);
+}
+
+.boton--claro {
+  border-color: var(--av-niebla);
+  color: var(--av-niebla);
+}
+
+.boton--claro:hover {
+  background: var(--av-niebla);
+  color: var(--av-bosque-profundo);
+}
+
+
+/* ==========================================================================
+   5. ENCABEZADO / NAVEGACIÓN
+   ========================================================================== */
+
+.encabezado {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: var(--espacio-md) 0;
+}
+
+.encabezado__fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.marca {
+  font-family: var(--tipo-display);
+  font-size: 1.35rem;
+  color: var(--av-niebla);
+  display: flex;
+  align-items: baseline;
+  gap: 0.15em;
+}
+
+.marca__punto { color: var(--av-barro-suave); }
+.marca__living {
+  font-family: var(--tipo-texto);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.85em;
+  color: var(--av-niebla);
+  opacity: 0.85;
+}
+
+.nav {
+  display: flex;
+  gap: var(--espacio-lg);
+}
+
+.nav a {
+  color: var(--av-niebla);
+  font-size: 0.95rem;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.nav a:hover::after { transform: scaleX(1); }
+
+.nav__toggle { display: none; }
+
+
+/* ==========================================================================
+   6. HERO (portada a pantalla completa)
+   ==========================================================================
+   El fondo es un SVG dibujado a mano (montañas en niebla + reflejo de agua)
+   en vez de una fotografía, para que el archivo sea 100% autocontenido.
+   Si prefieres una foto real, reemplaza <div class="hero__arte">...</div>
+   por una etiqueta <img>.
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--av-bosque-profundo);
+}
+
+.hero__arte {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero__arte img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero__velo {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(27,42,34,0.15) 0%, rgba(27,42,34,0.55) 78%, rgba(27,42,34,0.85) 100%);
+  z-index: 1;
+}
+
+.hero__contenido {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-bottom: var(--espacio-xl);
+}
+
+.hero__linea {
+  color: var(--av-niebla);
+  opacity: 0.8;
+  font-size: 0.95rem;
+  margin-bottom: var(--espacio-sm);
+  font-style: italic;
+  font-family: var(--tipo-display);
+}
+
+.hero__titulo {
+  color: var(--av-niebla);
+  font-size: clamp(2.6rem, 6vw, 5.4rem);
+  max-width: 15ch;
+  font-weight: 400;
+}
+
+.hero__pie {
+  margin-top: var(--espacio-lg);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--espacio-md);
+  flex-wrap: wrap;
+}
+
+.hero__descripcion {
+  color: var(--av-niebla);
+  opacity: 0.9;
+  max-width: 34ch;
+  font-size: 1.05rem;
+}
+
+
+/* ==========================================================================
+   7. FILOSOFÍA
+   ========================================================================== */
+
+.filosofia {
+  background: var(--av-niebla);
+}
+
+.filosofia__grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: var(--espacio-xl);
+  align-items: center;
+}
+
+.filosofia__marca-agua {
+  font-family: var(--tipo-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--av-musgo);
+  margin-bottom: var(--espacio-sm);
+}
+
+.filosofia__titulo {
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  margin-bottom: var(--espacio-md);
+}
+
+.filosofia__texto {
+  color: var(--av-piedra);
+  font-size: 1.05rem;
+}
+
+.filosofia__cifras {
+  display: flex;
+  gap: var(--espacio-lg);
+  margin-top: var(--espacio-lg);
+  padding-top: var(--espacio-md);
+  border-top: 1px solid var(--av-salvia);
+}
+
+.cifra__numero {
+  font-family: var(--tipo-display);
+  font-size: 2.1rem;
+  color: var(--av-bosque-profundo);
+  display: block;
+}
+
+.cifra__etiqueta {
+  font-size: 0.85rem;
+  color: var(--av-musgo);
+}
+
+.filosofia__arte {
+  aspect-ratio: 4 / 5;
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--av-salvia); /* color de respaldo mientras no haya foto */
+}
+
+.filosofia__arte img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* ==========================================================================
+   8. REFUGIOS (red de sitios)
+   ========================================================================== */
+
+.refugios {
+  background: var(--av-bosque-profundo);
+  color: var(--av-niebla);
+}
+
+.refugios .seccion__encabezado { color: var(--av-niebla); }
+.refugios .seccion__encabezado p { color: var(--av-salvia); }
+
+.seccion__encabezado {
+  max-width: 40ch;
+  margin-bottom: var(--espacio-lg);
+}
+
+.seccion__titulo {
+  font-size: clamp(1.9rem, 3.2vw, 2.7rem);
+}
+
+.seccion__intro {
+  margin-top: var(--espacio-sm);
+  color: var(--av-musgo);
+}
+
+.refugios__lista {
+  display: flex;
+  flex-direction: column;
+}
+
+.refugio {
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr auto;
+  gap: var(--espacio-lg);
+  align-items: center;
+  padding: var(--espacio-lg) 0;
+  border-top: 1px solid rgba(241, 237, 227, 0.18);
+}
+
+.refugios__lista .refugio:last-child {
+  border-bottom: 1px solid rgba(241, 237, 227, 0.18);
+}
+
+.refugio__nombre {
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+}
+
+.refugio__lugar {
+  display: block;
+  font-family: var(--tipo-texto);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--av-agua);
+  margin-top: var(--espacio-xs);
+}
+
+.refugio__descripcion {
+  color: var(--av-salvia);
+  max-width: 46ch;
+}
+
+.refugio__estado {
+  justify-self: end;
+  font-size: 0.85rem;
+  color: var(--av-barro-suave);
+  white-space: nowrap;
+  border: 1px solid var(--av-barro-suave);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+}
+
+
+/* ==========================================================================
+   9. EXPERIENCIA
+   ========================================================================== */
+
+.experiencia {
+  background: var(--av-niebla-oscura);
+}
+
+.experiencia__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--espacio-lg);
+  margin-top: var(--espacio-lg);
+}
+
+.experiencia__item {
+  padding-top: var(--espacio-md);
+  border-top: 1px solid var(--av-musgo);
+}
+
+.experiencia__icono {
+  width: 34px;
+  height: 34px;
+  margin-bottom: var(--espacio-sm);
+}
+
+.experiencia__titulo {
+  font-size: 1.25rem;
+  margin-bottom: var(--espacio-xs);
+}
+
+.experiencia__texto {
+  color: var(--av-musgo);
+  font-size: 0.98rem;
+}
+
+
+/* ==========================================================================
+   10. GALERÍA
+   ========================================================================== */
+
+.galeria {
+  background: var(--av-niebla);
+}
+
+.galeria__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 200px;
+  gap: var(--espacio-sm);
+  margin-top: var(--espacio-lg);
+}
+
+.galeria__pieza { grid-column: span 2; grid-row: span 1; overflow: hidden; background: var(--av-musgo); }
+.galeria__pieza--grande { grid-column: span 4; grid-row: span 2; }
+.galeria__pieza img { width: 100%; height: 100%; object-fit: cover; }
+
+
+/* ==========================================================================
+   11. CONTACTO / PIE DE PÁGINA
+   ========================================================================== */
+
+.contacto {
+  background: var(--av-bosque-profundo);
+  color: var(--av-niebla);
+}
+
+/* El encabezado va superpuesto (position: absolute) sobre el primer bloque
+   de la página. Como el formulario de registro ahora es ese primer bloque,
+   le damos espacio extra arriba para que el logo/menú no lo tape. */
+#registro {
+  padding-top: calc(var(--espacio-xl) + 3rem);
+}
+
+/* El pie de página ahora vive solo (el formulario se movió a #registro,
+   arriba del todo). Le damos su propio espaciado en vez de depender del
+   margen que .pie usaba cuando iba debajo del formulario. */
+footer.contacto {
+  padding: var(--espacio-lg) 0;
+}
+
+footer.contacto .pie {
+  margin-top: 0;
+  border-top: none;
+  padding-top: 0;
+}
+
+/* El pie de página ahora vive solo (el formulario se movió a #registro,
+   arriba del todo). Le damos su propio espaciado en vez de depender del
+   margen que .pie usaba cuando iba debajo del formulario. */
+footer.contacto {
+  padding: var(--espacio-lg) 0;
+}
+
+footer.contacto .pie {
+  margin-top: 0;
+  border-top: none;
+  padding-top: 0;
+}
+
+.contacto__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--espacio-xl);
+}
+
+.contacto__titulo {
+  color: var(--av-niebla);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  max-width: 14ch;
+}
+
+.contacto__texto {
+  color: var(--av-salvia);
+  margin-top: var(--espacio-md);
+  max-width: 40ch;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-sm);
+}
+
+.formulario label {
+  font-size: 0.85rem;
+  color: var(--av-salvia);
+}
+
+.formulario input,
+.formulario textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(241, 237, 227, 0.35);
+  color: var(--av-niebla);
+  font-family: var(--tipo-texto);
+  font-size: 1rem;
+  padding: 0.6rem 0;
+  margin-bottom: var(--espacio-sm);
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+  outline: none;
+  border-bottom-color: var(--av-barro-suave);
+}
+
+.formulario ::placeholder { color: rgba(241, 237, 227, 0.45); }
+
+.pie {
+  border-top: 1px solid rgba(241, 237, 227, 0.18);
+  margin-top: var(--espacio-xl);
+  padding-top: var(--espacio-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--espacio-sm);
+  font-size: 0.85rem;
+  color: var(--av-salvia);
+}
+
+.pie__redes { display: flex; gap: var(--espacio-md); }
+.pie__redes a:hover { color: var(--av-niebla); }
+
+
+/* ==========================================================================
+   12. RESPONSIVE (pantallas pequeñas)
+   ========================================================================== */
+
+/* ==========================================================================
+   12. ANIMACIONES
+   ==========================================================================
+   Aquí vive todo el movimiento del sitio: la secuencia de entrada de la
+   portada, el revelado de contenido al hacer scroll, el encabezado que se
+   oculta/aparece según la dirección del scroll, y el punto que sigue al
+   cursor. Todo se controla desde script.js añadiendo/quitando clases; este
+   bloque solo define cómo se ve cada estado.
+
+   Si quieres desactivar una animación puntual, borra la clase correspondiente
+   aquí — el contenido sigue funcionando igual, solo deja de moverse.
+   ========================================================================== */
+
+/* --- 12.1 Secuencia de entrada de la portada (se dispara una sola vez, al cargar) --- */
+
+.hero__arte img {
+  transform: scale(1.12);
+  transition: transform 2.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero__velo {
+  opacity: 0;
+  transition: opacity 1.8s ease;
+}
+
+.hero__linea,
+.hero__titulo,
+.hero__pie {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero__linea       { transition-delay: 0.5s; }
+.hero__titulo       { transition-delay: 0.7s; }
+.hero__pie          { transition-delay: 0.95s; }
+
+/* Cuando script.js añade "hero--listo" al <body> (justo después de cargar) */
+.hero--listo .hero__arte img   { transform: scale(1); }
+.hero--listo .hero__velo       { opacity: 1; }
+.hero--listo .hero__linea,
+.hero--listo .hero__titulo,
+.hero--listo .hero__pie        { opacity: 1; transform: translateY(0); }
+
+/* --- 12.2 Revelado al hacer scroll --- */
+/* script.js observa cada [data-reveal] y le añade "es-visible" cuando entra
+   en pantalla. El retraso escalonado entre elementos hermanos se logra con
+   la variable --retraso, que también fija script.js según el orden. */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--retraso, 0s);
+}
+
+[data-reveal].es-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Las imágenes se revelan con una "cortina" que se abre, en vez de solo aparecer */
+[data-reveal="imagen"] {
+  position: relative;
+  overflow: hidden;
+}
+
+[data-reveal="imagen"] img {
+  transform: scale(1.15);
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--retraso, 0s);
+}
+
+[data-reveal="imagen"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--av-niebla);
+  transform-origin: top;
+  transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
+  transition-delay: var(--retraso, 0s);
+}
+
+[data-reveal="imagen"].es-visible img   { transform: scale(1); }
+[data-reveal="imagen"].es-visible::after { transform: scaleY(0); }
+
+/* Los números de "Filosofía" cuentan hacia arriba — el valor final ya está
+   en el HTML (para que funcione sin JS); script.js solo anima el conteo. */
+.cifra__numero { font-variant-numeric: tabular-nums; }
+
+/* --- 12.3 Encabezado que reacciona al scroll --- */
+
+.encabezado {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease, padding 0.4s ease;
+}
+
+.encabezado--fijo {
+  position: fixed;
+  background: rgba(27, 42, 34, 0.85);
+  backdrop-filter: blur(6px);
+  padding: 1.1rem 0;
+}
+
+.encabezado--oculto { transform: translateY(-110%); }
+
+/* --- 12.4 Punto que sigue al cursor (solo escritorio, con puntero fino) --- */
+
+.cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--av-barro-suave);
+  pointer-events: none;
+  z-index: 999;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s ease, height 0.25s ease, opacity 0.25s ease;
+  opacity: 0;
+}
+
+.cursor--activo { opacity: 1; }
+.cursor--grande { width: 46px; height: 46px; background: transparent; border: 1px solid var(--av-barro-suave); }
+
+@media (hover: none), (pointer: coarse) {
+  .cursor { display: none; } /* se oculta en pantallas táctiles */
+}
+
+/* Quien prefiere menos movimiento ve el sitio completo, solo que sin animar */
+@media (prefers-reduced-motion: reduce) {
+  .hero__arte img,
+  .hero__velo,
+  .hero__linea, .hero__titulo, .hero__pie,
+  [data-reveal],
+  [data-reveal="imagen"] img,
+  [data-reveal="imagen"]::after {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .cursor { display: none; }
+}
+
+
+@media (max-width: 900px) {
+  .filosofia__grid,
+  .contacto__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filosofia__arte { order: -1; }
+
+  .refugio {
+    grid-template-columns: 1fr;
+    gap: var(--espacio-sm);
+  }
+
+  .refugio__estado { justify-self: start; }
+
+  .experiencia__grid {
+    grid-template-columns: 1fr;
+    gap: var(--espacio-md);
+  }
+
+  .galeria__grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 160px;
+  }
+
+  .galeria__pieza--grande { grid-column: span 2; grid-row: span 1; }
+
+  .nav { display: none; }
+}
+
+@media (max-width: 560px) {
+  .contenedor { padding: 0 var(--espacio-sm); }
+  .seccion { padding: var(--espacio-lg) 0; }
+  .hero__pie { flex-direction: column; align-items: flex-start; }
+  .filosofia__cifras { flex-wrap: wrap; gap: var(--espacio-md); }
+}
