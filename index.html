@@ -45,17 +45,24 @@
 
   <script>
     // Formulario de registro → redirige a WhatsApp con el nombre incluido en el mensaje.
-    // IMPORTANTE: reemplaza "570000000000" por tu número real de WhatsApp,
-    // con indicativo de país y sin "+" ni espacios (ej: Colombia → 57 + 10 dígitos).
+    // Si la URL trae el parámetro "queruz" (ej: aguaviva.living/?queruz), se usa un
+    // mensaje distinto que menciona el origen "Corazón de Colombia".
     document.getElementById('formulario-whatsapp').addEventListener('submit', function (evento) {
       evento.preventDefault();
       var nombre = document.getElementById('nombre').value.trim();
       if (!nombre) return;
 
       var numeroWhatsapp = '573204701302';
-      var mensaje = 'Hola, soy ' + nombre + '. Quiero más información sobre Agua Viva.';
-      var url = 'https://wa.me/' + numeroWhatsapp + '?text=' + encodeURIComponent(mensaje);
+      var parametros = new URLSearchParams(window.location.search);
+      var mensaje;
 
+      if (parametros.has('cc')) {
+        mensaje = 'Hola, a través de Corazón de Colombia supe de este proyecto, ¿me pueden dar por favor más información?';
+      } else {
+        mensaje = 'Hola, soy ' + nombre + '. Quiero más información sobre Agua Viva.';
+      }
+
+      var url = 'https://wa.me/' + numeroWhatsapp + '?text=' + encodeURIComponent(mensaje);
       window.open(url, '_blank');
     });
   </script>
