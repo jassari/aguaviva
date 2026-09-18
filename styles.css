@@ -49,6 +49,10 @@
   /* --- Agua: el guiño literal al nombre "Agua Viva" --- */
   --av-agua:            #7FA39B;   /* Verde-azul mineral — usado con moderación, agua/reflejos */
 
+  /* --- Vivo: único acento saturado del sitio, reservado para la acción principal --- */
+  --av-vivo:            #3FAF52;   /* Ámbar vivo — fondo del botón de llamada a la acción principal */
+  --av-vivo-oscuro:     #2E8C3E;   /* Versión oscura del ámbar — hover del botón principal */
+
   /* --- Tipografía: tamaños base (ver sección 2 para las familias) --- */
   --tipo-display: "Fraunces", "Iowan Old Style", Georgia, serif;
   --tipo-texto:   "Karla", "Helvetica Neue", Arial, sans-serif;
@@ -170,6 +174,18 @@ button:focus-visible {
 .boton--claro:hover {
   background: var(--av-niebla);
   color: var(--av-bosque-profundo);
+}
+
+.boton--vivo {
+  border-color: var(--av-vivo);
+  background: var(--av-vivo);
+  color: var(--av-bosque-profundo);
+}
+
+.boton--vivo:hover {
+  background: var(--av-vivo-oscuro);
+  border-color: var(--av-vivo-oscuro);
+  color: var(--av-niebla);
 }
 
 

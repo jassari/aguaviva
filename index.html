@@ -3,20 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>agua viva · living — refugios de retiro en clima de niebla</title>
-<meta name="description" content="Una red de refugios de retiro natural en clima fresco, pensados para el silencio, el agua y el descanso.">
+<title>Aguaviva · living </title>
+<meta name="description" content="Eco condominio de clima fresco, paz, agua y descanso.">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header class="encabezado">
   <div class="contenedor encabezado__fila">
-    <a href="#registro" class="marca">agua viva<span class="marca__punto">.</span><span class="marca__living">living</span></a>
+    <a href="#registro" class="marca">aguaviva<span class="marca__punto">.</span><span class="marca__living">living</span></a>
     <nav class="nav">
-      <a href="#filosofia">Filosofía</a>
-      <a href="#refugios">Refugios</a>
-      <a href="#experiencia">Experiencia</a>
       <a href="#registro">Registro</a>
+      <a href="#descripcion">Qué es</a>      
+      <a href="#beneficios">Beneficios</a> 
+      <a href="#inversion">Inversión</a>      
+      <a href="#galeria">Naturaleza</a>
     </nav>
   </div>
 </header>
@@ -29,32 +30,41 @@
   <div class="contenedor">
     <div class="contacto__grid">
       <div data-reveal>
-        <h2 class="contacto__titulo">Sé de los primeros en conocer el próximo refugio</h2>
-        <p class="contacto__texto">Regístrate si te interesa reservar, invertir en un futuro sitio de la red, o simplemente saber cuándo abre el siguiente refugio.</p>
+        <h2 class="contacto__titulo">Invierte tempranamente con precio rebajado, valoración prevista corto plazo del 20%</h2>
+        <p class="contacto__texto">Escríbenos por WhatsApp — solo necesitamos tu nombre.</p>
       </div>
-      <form class="formulario" data-reveal onsubmit="return false;">
+      <form class="formulario" id="formulario-whatsapp" data-reveal>
         <div>
           <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
         </div>
-        <div>
-          <label for="correo">Correo</label>
-          <input type="email" id="correo" name="correo" placeholder="tucorreo@ejemplo.com">
-        </div>
-        <div>
-          <label for="mensaje">Mensaje</label>
-          <textarea id="mensaje" name="mensaje" rows="3" placeholder="Cuéntanos qué te interesa"></textarea>
-        </div>
-        <button type="submit" class="boton boton--claro" style="align-self:flex-start;">Enviar mensaje</button>
+        <button type="submit" class="boton boton--vivo" style="align-self:flex-start;">Continuar por WhatsApp</button>
       </form>
     </div>
   </div>
+
+  <script>
+    // Formulario de registro → redirige a WhatsApp con el nombre incluido en el mensaje.
+    // IMPORTANTE: reemplaza "570000000000" por tu número real de WhatsApp,
+    // con indicativo de país y sin "+" ni espacios (ej: Colombia → 57 + 10 dígitos).
+    document.getElementById('formulario-whatsapp').addEventListener('submit', function (evento) {
+      evento.preventDefault();
+      var nombre = document.getElementById('nombre').value.trim();
+      if (!nombre) return;
+
+      var numeroWhatsapp = '573204701302';
+      var mensaje = 'Hola, soy ' + nombre + '. Quiero más información sobre Agua Viva.';
+      var url = 'https://wa.me/' + numeroWhatsapp + '?text=' + encodeURIComponent(mensaje);
+
+      window.open(url, '_blank');
+    });
+  </script>
 </section>
 
 <!-- ==========================================================================
      HERO
      ========================================================================== -->
-<section class="hero" id="inicio">
+<section class="hero" id="descripcion">
   <div class="hero__arte" aria-hidden="true">
     <!-- Reemplaza esta imagen: pon tu foto en images/hero.jpg -->
     <img src="images/hero.jpg" alt="" loading="eager">
@@ -62,96 +72,46 @@
   <div class="hero__velo" aria-hidden="true"></div>
 
   <div class="hero__contenido contenedor">
-    <p class="hero__linea">una red de refugios, no un lugar único</p>
-    <h1 class="hero__titulo">Donde el aire frío y el agua marcan el ritmo del descanso</h1>
+    <p class="hero__linea"></p>
+    <h1 class="hero__titulo">Donde la brisa fresca, las aves y el agua son una experiencia de descanso</h1>
     <div class="hero__pie">
-      <p class="hero__descripcion">Cabañas de retiro en climas frescos de Colombia, diseñadas para quienes buscan silencio real y naturaleza sin artificio.</p>
-      <a href="#refugios" class="boton boton--claro">Conocer los refugios</a>
+      <p class="hero__descripcion">Lotes para cabañas de retiro en clima fresco en Victoria, Caldas, Colombia, diseñadas para quienes buscan silencio real, comodidad y naturaleza.</p>
+      <a href="#registro" class="boton boton--claro">Conoce más</a>
     </div>
   </div>
 </section>
 
 <!-- ==========================================================================
-     FILOSOFÍA
+     Brisa
      ========================================================================== -->
-<section class="filosofia seccion" id="filosofia">
+<section class="filosofia seccion" id="beneficios">
   <div class="contenedor filosofia__grid">
     <div class="filosofia__arte" data-reveal="imagen">
-      <!-- Reemplaza esta imagen: pon tu foto en images/filosofia.jpg -->
-      <img src="images/filosofia.jpg" alt="Detalle del entorno natural de un refugio Agua Viva" loading="lazy">
+      <!-- Reemplaza este video: pon tu archivo en videos/filosofia.mp4 -->
+      <video src="videos/brisa.mp4" autoplay muted loop playsinline poster="videos/brisa.png" aria-label="Detalle del entorno natural de un refugio Agua Viva"></video>
     </div>
     <div>
-      <p class="filosofia__marca-agua" data-reveal>el agua no se apura, y aun así llega a todas partes</p>
-      <h2 class="filosofia__titulo" data-reveal>Un refinamiento sereno, no ostentoso</h2>
-      <p class="filosofia__texto" data-reveal>Agua Viva nace de una idea simple: el descanso profundo necesita un clima específico. No cualquier finca, no cualquier temperatura. Buscamos terrenos de montaña, con niebla en las mañanas y agua cerca — nacimientos, quebradas, lagunas — porque ese es el entorno donde el cuerpo se aquieta sin esfuerzo.</p>
-      <p class="filosofia__texto" data-reveal>Cada refugio se diseña con materiales locales y arquitectura discreta, para que el paisaje siga siendo el protagonista. Nada de lujo ruidoso: espacios cálidos, bien hechos, pensados para quedarse en silencio.</p>
-      <div class="filosofia__cifras" data-reveal>
-        <div>
-          <span class="cifra__numero">1</span>
-          <span class="cifra__etiqueta">refugio en operación</span>
-        </div>
-        <div>
-          <span class="cifra__numero">+2</span>
-          <span class="cifra__etiqueta">terrenos en evaluación</span>
-        </div>
-        <div>
-          <span class="cifra__numero">100%</span>
-          <span class="cifra__etiqueta">clima frío de montaña</span>
-        </div>
-      </div>
+      <p class="filosofia__marca-agua" data-reveal></p>
+      <h2 class="filosofia__titulo" data-reveal>Aqui corre brisa fresca todo el año, todos los dias en la tarde</h2>
+      <p class="filosofia__texto" data-reveal> </p>A solo 500 mts de la carretera pavimentada</p>
+      <p class="filosofia__texto" data-reveal>Cilma fresco, ambiente tranquilo</p>
+      <p class="filosofia__texto" data-reveal>Avistamiento de aves, micos, fauna</p>
+      <p class="filosofia__texto" data-reveal>Luz eléctrica, acueducto veredal y la quebrada pasa por el lindero del condominio</p>
+      
+
     </div>
   </div>
 </section>
 
-<!-- ==========================================================================
-     REFUGIOS
-     ========================================================================== -->
-<section class="refugios seccion" id="refugios">
-  <div class="contenedor">
-    <div class="seccion__encabezado" data-reveal>
-      <h2 class="seccion__titulo">Los refugios</h2>
-      <p class="seccion__intro">Agua Viva crece como una red: cada sitio nuevo se suma solo si cumple con el mismo criterio de clima y agua. Esto es lo que hay hasta ahora.</p>
-    </div>
-
-    <div class="refugios__lista">
-      <div class="refugio" data-reveal>
-        <div>
-          <h3 class="refugio__nombre">Refugio Cañaveral</h3>
-          <span class="refugio__lugar">Vereda Cañaveral, Victoria, Caldas</span>
-        </div>
-        <p class="refugio__descripcion">El primer sitio de la red. Un lote de montaña sobre clima fresco, con acceso propio en desarrollo y vista abierta a la cordillera.</p>
-        <span class="refugio__estado">en desarrollo</span>
-      </div>
-
-      <div class="refugio" data-reveal>
-        <div>
-          <h3 class="refugio__nombre">Próximo refugio</h3>
-          <span class="refugio__lugar">Oriente antioqueño</span>
-        </div>
-        <p class="refugio__descripcion">Estamos evaluando un segundo terreno en clima frío, siguiendo el mismo criterio de agua cercana y niebla de montaña.</p>
-        <span class="refugio__estado">en evaluación</span>
-      </div>
-
-      <div class="refugio" data-reveal>
-        <div>
-          <h3 class="refugio__nombre">Tercer sitio</h3>
-          <span class="refugio__lugar">por confirmar</span>
-        </div>
-        <p class="refugio__descripcion">La red sigue abierta. Cada nuevo refugio se anuncia aquí antes de abrir reservas.</p>
-        <span class="refugio__estado">próximamente</span>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ==========================================================================
-     EXPERIENCIA
+     EXPERIENCIAu 
      ========================================================================== -->
-<section class="experiencia seccion" id="experiencia">
+<section class="experiencia seccion" id="inversion">
   <div class="contenedor">
     <div class="seccion__encabezado" data-reveal>
-      <h2 class="seccion__titulo">La estadía</h2>
-      <p class="seccion__intro">Lo que se mantiene igual en cualquier refugio de la red, sin importar el sitio.</p>
+      <h2 class="seccion__titulo">Vivir allí o rentar a turistas</h2>
+      <p class="seccion__intro">Puedes irte a vivir a este paraiso o rentar a turistas ecológistas de todo el mundo. Es un sitio ideal por ejemplo para avistamiento de aves</p>
     </div>
 
     <div class="experiencia__grid">
@@ -168,17 +128,16 @@
           <circle cx="17" cy="17" r="6" stroke="#5C6E56" stroke-width="1.6"/>
           <path d="M17 4v4M17 26v4M4 17h4M26 17h4" stroke="#5C6E56" stroke-width="1.6" stroke-linecap="round"/>
         </svg>
-        <h3 class="experiencia__titulo">Clima frío de montaña</h3>
+        <h3 class="experiencia__titulo">Clima fresco desde la cordillera al valle</h3>
         <p class="experiencia__texto">Temperaturas frescas todo el año — sin ventiladores, sin aire acondicionado.</p>
       </div>
-      <div class="experiencia__item" data-reveal>
-        <svg class="experiencia__icono" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="6" y="10" width="22" height="17" rx="1" stroke="#5C6E56" stroke-width="1.6"/>
-          <path d="M6 15h22" stroke="#5C6E56" stroke-width="1.6"/>
-        </svg>
-        <h3 class="experiencia__titulo">Arquitectura discreta</h3>
-        <p class="experiencia__texto">Materiales locales, escala pequeña, sin competir nunca con el paisaje.</p>
-      </div>
+     <div class="experiencia__item" data-reveal>
+  <svg class="experiencia__icono" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3 19c5-9 10-9 14-3 4-6 9-6 14 3-5-3-10-3-14 1-4-4-9-4-14-1Z" stroke="#5C6E56" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+  </svg>
+  <h3 class="experiencia__titulo">Avistamiento de aves exóticas</h3>
+  <p class="experiencia__texto">El bosque y la quebrada cercana atraen especies propias del bosque andino — un atractivo natural para quienes disfrutan la observación de aves.</p>
+</div>
     </div>
   </div>
 </section>
@@ -189,24 +148,24 @@
 <section class="galeria seccion" id="galeria">
   <div class="contenedor">
     <div class="seccion__encabezado" data-reveal>
-      <h2 class="seccion__titulo">Atmósfera</h2>
+      <h2 class="seccion__titulo">Conexión con la naturaleza cerca a la ciudad</h2>
     </div>
     <div class="galeria__grid">
       <!-- Cada pieza es una foto. Coloca tus archivos en la carpeta images/ con estos nombres, o cambia el src. -->
       <div class="galeria__pieza galeria__pieza--grande" data-reveal="imagen">
-        <img src="images/galeria-1.jpg" alt="Vista amplia de montaña con niebla" loading="lazy">
+        <img src="images/quebrada1.jpg" alt="Vista amplia de montaña con niebla" loading="lazy">
       </div>
       <div class="galeria__pieza" data-reveal="imagen">
-        <img src="images/galeria-2.jpg" alt="Detalle de textura natural" loading="lazy">
+        <img src="images/tortuga.jpg" alt="Detalle de textura natural" loading="lazy">
       </div>
       <div class="galeria__pieza" data-reveal="imagen">
-        <img src="images/galeria-3.jpg" alt="Detalle de agua" loading="lazy">
+        <img src="images/arbol.jpg" alt="Detalle de agua" loading="lazy">
       </div>
       <div class="galeria__pieza" data-reveal="imagen">
-        <img src="images/galeria-4.jpg" alt="Detalle de madera" loading="lazy">
+        <img src="images/v2.jpg" alt="Detalle de madera" loading="lazy">
       </div>
       <div class="galeria__pieza" data-reveal="imagen">
-        <img src="images/galeria-5.jpg" alt="Sendero entre la vegetación" loading="lazy">
+        <img src="images/ave.jpg" alt="Sendero entre la vegetación" loading="lazy">
       </div>
     </div>
   </div>
@@ -218,14 +177,19 @@
 <footer class="contacto">
   <div class="contenedor">
     <div class="pie">
-      <span>© 2026 agua viva · living</span>
+      <span>© <span id="anio-actual">2026</span> aguaviva · living</span>
       <div class="pie__redes">
-        <a href="#">Instagram</a>
-        <a href="#">WhatsApp</a>
-        <a href="#">Correo</a>
+       <!-- <a href="#">Instagram</a> -->
+        <a href="https://wa.me/573204701302" target="_blank" rel="noopener">WhatsApp +57 320 470 1302</a>
+        <p>Victoria, Caldas, Colombia</p>
+        <!--  <a href="#">Correo</a>-->
       </div>
     </div>
   </div>
+
+  <script>
+    document.getElementById('anio-actual').textContent = new Date().getFullYear();
+  </script>
 </footer>
 
 <script src="script.js" defer></script>
